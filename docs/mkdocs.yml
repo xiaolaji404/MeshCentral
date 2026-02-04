@@ -84,15 +84,33 @@ theme:
     - navigation.tabs
     - navigation.top
     - navigation.sections
-    - navigation.instant
+#    - navigation.instant
     - search.suggest
 extra_css:
   - stylesheets/extra.css
 extra:
   generator: false
+  alternate:
+    - name: English
+      link: /
+      lang: en
+    - name: 中文
+      link: /zh/
+      lang: zh
+
+
 plugins:
+  - i18n:
+      docs_structure: folder  # 或 suffix，推荐 folder 模式
+      languages:
+        - locale: en
+          name: English
+          default: true
+        - locale: zh
+          name: 中文
   - search
   - print-site
+
 
 markdown_extensions:
   - pymdownx.emoji:
