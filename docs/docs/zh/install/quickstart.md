@@ -1,85 +1,85 @@
-# Quickstart
+# 快速开始
 
-## 🚀 Quick Start Guide: Basic NPM Installation
+## 🚀 快速开始指南：使用NPM进行最基本的安装
 
-MeshCentral is platform-agnostic, running almost anywhere thanks to being primarily written in JavaScript. This guide covers the simplest way to get started using **NPM**.
+MeshCentral 是跨平台的，由于主要使用 JavaScript 编写，几乎可以在任何地方运行。本指南介绍使用 **NPM** 入门的最简单方法。
 
-### 🛠️ Basic Setup
+### 🛠️ 基础设置
 
-The only prerequisites are **Node.js** and **npm**.
-
------
-
-#### 1\. Install Node.js
-
-  * **Linux:** Find installation instructions for your distribution [here](https://nodejs.org/en/download/package-manager/all).
-  * **Windows:** Download the installer from the official site [here](https://nodejs.org/en).
-
-> 🪟 **Windows Users:** If you prefer an automated setup, you can skip the manual installation and download the **Windows MeshCentral Installer**. However, this is **not recommended for advanced users**.
-> [Download Windows MeshCentral Installer](https://meshcentral.com/tools/MeshCentralInstaller.exe)
+唯一的先决条件是 **Node.js** 和 **npm**。
 
 -----
 
-#### 2\. Install and Start MeshCentral
+#### 1\. 安装 Node.js
 
-Create a dedicated directory (e.g., `/opt/meshcentral`) and run the following commands in your terminal.
+  * **Linux:** 在[这里](https://nodejs.org/en/download/package-manager/all)找到适合您发行版的安装说明。
+  * **Windows:** 从官方网站[这里](https://nodejs.org/en)下载安装程序。
 
-> ⚠️ **Do not** use `sudo` with the `npm install meshcentral` command.
+> 🪟 **Windows 用户：** 如果您更喜欢自动化的安装方式，可以跳过手动安装，直接下载 **Windows MeshCentral 安装程序**。不过，这**不推荐高级用户使用**。
+> [下载 Windows MeshCentral 安装程序](https://meshcentral.com/tools/MeshCentralInstaller.exe)
+
+-----
+
+#### 2\. 安装并启动 MeshCentral
+
+创建一个专用目录（例如 `/opt/meshcentral`），然后在终端中运行以下命令。
+
+> ⚠️ 使用 `npm install meshcentral` 命令时**不要**使用 `sudo`。
 
 ```shell
-# Example: Create and move into the directory
+# 示例：创建并进入目录
 mkdir -p /opt/meshcentral
 cd /opt/meshcentral
 
-# Install the MeshCentral package
+# 安装 MeshCentral 包
 npm install meshcentral
 
-# Start the server
+# 启动服务器
 node node_modules/meshcentral
 ```
 
-That's it\! MeshCentral will now set itself up and begin managing computers on your **local network** that have the MeshAgent installed.
+就这样！MeshCentral 现在将自动完成设置，并开始管理**本地网络**中安装了 MeshAgent 的计算机。
 
-#### Running as a Service
+#### 作为服务运行
 
-To run MeshCentral as a persistent background service (recommended for production environments), use the --install argument when starting the server. Consult the MeshCentral documentation for OS-specific service setup details.
-
------
-
-### ⚙️ Configuration and Customization
-
-#### Default Mode and Initial Access
-
-By default, MeshCentral starts in **LAN-only mode**. Agents use local network multicasting to find the server.
-
-  * The first user account you create upon accessing the server will automatically become the **server administrator**. Access the login page in your web browser and create your account right away.
-  * Once installed, server settings are stored in the **`config.json`** file, which is located inside the **`meshcentral-data`** folder.
-
-#### Advanced Configuration
-
-The **`config.json`** file holds hundreds of options for deep customization, including:
-
-  * Switching the server from LAN-only to **WAN/Hybrid mode** by setting a known DNS name.
-  * Customizing the server with your own **branding**.
-  * Setting up an **SMTP email server** or **SMS services**.
-
-The configuration file must be valid **JSON**. You can use an online tool or utilities like `jq` to validate its format.
-
-You can find sample configuration files on the GitHub repository for reference:
-
-  * [Simple sample config](https://github.com/Ylianst/MeshCentral/blob/master/sample-config.json)
-  * [Advanced sample config](https://github.com/Ylianst/MeshCentral/blob/master/sample-config-advanced.json)
-  * [Full config schema](https://github.com/Ylianst/MeshCentral/blob/master/meshcentral-config-schema.json)
+要将 MeshCentral 作为持久化的后台服务运行（推荐用于生产环境），请在启动服务器时使用 --install 参数。有关操作系统特定的服务设置详情，请参阅 MeshCentral 文档。
 
 -----
 
-### Database and Scaling Notes
+### ⚙️ 配置与自定义
 
-  * **Database:** By default, MeshCentral uses **NeDB**, its built-in database. For advanced use cases and better performance, it's recommended to switch to **MongoDB** or an SQL-based solution like **Postgresql**.
-  * **Hardware:** MeshCentral is very lightweight. You can run a server capable of managing a few hundred devices on a small platform like a **Raspberry Pi** or an **AWS t3.nano** instance running Linux.
-  * **Service Mode:** To run the server as a background service, start it with the `--help` argument to view options for background installation.
+#### 默认模式和初始访问
 
-For a visual guide, check out the official [YouTube Tutorial Videos](https://www.youtube.com/@MeshCentral/videos).
+默认情况下，MeshCentral 以**仅局域网模式**启动。代理使用本地网络多播来查找服务器。
+
+  * 您访问服务器时创建的第一个用户账户将自动成为**服务器管理员**。在网页浏览器中访问登录页面并立即创建您的账户。
+  * 安装完成后，服务器设置存储在 **`config.json`** 文件中，该文件位于 **`meshcentral-data`** 文件夹内。
+
+#### 高级配置
+
+**`config.json`** 文件包含数百个用于深度自定义的选项，包括：
+
+  * 通过设置已知的 DNS 名称，将服务器从仅局域网模式切换到 **WAN/混合模式**。
+  * 使用您自己的**品牌**自定义服务器。
+  * 设置 **SMTP 邮件服务器**或**短信服务**。
+
+配置文件必须是有效的 **JSON**。您可以使用在线工具或 `jq` 等工具验证其格式。
+
+您可以在 GitHub 仓库中找到示例配置文件作为参考：
+
+  * [简单示例配置](https://github.com/Ylianst/MeshCentral/blob/master/sample-config.json)
+  * [高级示例配置](https://github.com/Ylianst/MeshCentral/blob/master/sample-config-advanced.json)
+  * [完整配置模式](https://github.com/Ylianst/MeshCentral/blob/master/meshcentral-config-schema.json)
+
+-----
+
+### 数据库和扩展说明
+
+  * **数据库：** 默认情况下，MeshCentral 使用 **NeDB**，其内置数据库。对于高级用例和更好的性能，建议切换到 **MongoDB** 或基于 SQL 的解决方案，如 **Postgresql**。
+  * **硬件：** MeshCentral 非常轻量级。您可以在小型平台上运行能够管理数百台设备的服务器，如 **Raspberry Pi** 或运行 Linux 的 **AWS t3.nano** 实例。
+  * **服务模式：** 要将服务器作为后台服务运行，请使用 `--help` 参数启动以查看后台安装选项。
+
+如需视觉指南，请查看官方 [YouTube 教程视频](https://www.youtube.com/@MeshCentral/videos)。
 
 \<div class="video-wrapper"\>
   \<iframe src="[https://www.youtube.com/embed/LSiWuu71k\_U](https://www.youtube.com/embed/LSiWuu71k_U)" frameborder="0" allowfullscreen\>\</iframe\>
@@ -87,4 +87,4 @@ For a visual guide, check out the official [YouTube Tutorial Videos](https://www
 
 -----
 
-Do you want to know more about configuring the server for WAN access or switching to a different database?
+想要了解更多关于配置服务器以进行 WAN 访问或切换到不同数据库的信息吗？

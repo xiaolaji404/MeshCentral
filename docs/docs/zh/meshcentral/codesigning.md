@@ -1,14 +1,14 @@
-# Code Signing
+# 代码签名
 
-## Authenticode-JS Video
+## Authenticode-JS 视频
 
-Nodejs Code Signing module
+Nodejs 代码签名模块
 
 <div class="video-wrapper">
   <iframe width="320" height="180" src="https://www.youtube.com/embed/xteKscs_Jgo" frameborder="0" allowfullscreen></iframe>
 </div>
 
-MeshCentral comes with authenticode.js, you can run it like this:
+MeshCentral 自带 authenticode.js，您可以这样运行：
 
 ```bash
 node node_modules/meshcentral/authenticode-js
@@ -73,20 +73,20 @@ When doing sign/unsign, you can also change resource properties of the generated
           --productversion [value]
 ```
 
-## Automatic Agent Code Signing
+## 自动代理代码签名
 
-If you want to self-sign the mesh agent so you can whitelist the software in your AV, as well as lock it to your server and organization:
+如果您想对 mesh 代理进行自签名，以便在您的防病毒软件中将其列入白名单，并将其锁定到您的服务器和组织：
 
 <div class="video-wrapper">
   <iframe width="320" height="180" src="https://www.youtube.com/embed/qMAestNgCwc" frameborder="0" allowfullscreen></iframe>
 </div>
 
 !!!note
-    If you generate your private key on windows with use `BEGIN PRIVATE KEY` and openssl needs `BEGIN RSA PRIVATE KEY` you can convert your private key to rsa private key using `openssl rsa -in server.key -out server_new.key`
+    如果您在 Windows 上使用 `BEGIN PRIVATE KEY` 生成私钥，而 openssl 需要 `BEGIN RSA PRIVATE KEY`，您可以使用 `openssl rsa -in server.key -out server_new.key` 将您的私钥转换为 rsa 私钥
 
-## Setting Agent File info
+## 设置代理文件信息
 
-Now that MeshCentral customizes and signs the agent, you can set that value to anything you like.
+现在 MeshCentral 自定义并签名代理，您可以将该值设置为您喜欢的任何内容。
 
 ```json
 "domains": {
@@ -102,21 +102,21 @@ Now that MeshCentral customizes and signs the agent, you can set that value to a
 }
 ```
 
-## External Signing Job
+## 外部签名作业
 
-The externalsignjob feature allows you to perform additional operations on the agent after MeshCentral completes its code signing process. This is particularly useful for:
+externalsignjob 功能允许您在 MeshCentral 完成其代码签名过程后对代理执行额外的操作。这对于以下情况特别有用：
 
-1. Using hardware security tokens for signing
-2. Performing signing on a separate server or cloud host
-3. Archiving signed agents
-4. Adding additional security measures
+1. 使用硬件安全令牌进行签名
+2. 在单独的服务器或云主机上执行签名
+3. 归档签名代理
+4. 添加额外的安全措施
 
-The externalsignjob is called after MeshCentral completes its entire code signing process, including:
-- Resource modification
-- Digital signature application
-- Timestamp application (if configured)
+externalsignjob 在 MeshCentral 完成其整个代码签名过程后调用，包括：
+- 资源修改
+- 数字签名应用
+- 时间戳应用（如果已配置）
 
-To use this feature, add the following to your config.json:
+要使用此功能，请将以下内容添加到您的 config.json：
 
 ```json
 "settings": {
@@ -124,27 +124,27 @@ To use this feature, add the following to your config.json:
 }
 ```
 
-The script will receive the path to the agent as its first argument. Here are example scripts:
+脚本将接收代理的路径作为其第一个参数。以下是示例脚本：
 
-### Batch File Example
+### 批处理文件示例
 ```batch
 @echo off
 Echo External Signing Job
 signtool sign /tr http://timestamp.sectigo.com /td SHA256 /fd SHA256 /a /v /f path/to/your/signing.cer /csp "eToken Base Cryptographic Provider" /k "[{{MyPassword}}]=PrivateKeyContainerName" "%~1"
 ```
 
-### PowerShell Example
+### PowerShell 示例
 ```powershell
 $file = $args[0]
 signtool sign /tr http://timestamp.sectigo.com /td SHA256 /fd SHA256 /a /v /f path/to/your/signing.cer /csp "eToken Base Cryptographic Provider" /k "[{{MyPassword}}]=PrivateKeyContainerName" $file
 ```
 
-The externalsignjob can be used for more than just signing. For example, you could:
+externalsignjob 不仅可以用于签名。例如，您可以：
 
-1. Archive signed agents to a secure location
-2. Upload signed agents to a distribution server
-3. Perform additional security checks
-4. Add custom metadata or watermarks
-5. Integrate with your organization's build pipeline
+1. 将签名代理归档到安全位置
+2. 将签名代理上传到分发服务器
+3. 执行额外的安全检查
+4. 添加自定义元数据或水印
+5. 与您组织的构建管道集成
 
-Note: The script must return a success exit code (0) for the process to be considered successful. Any non-zero exit code will be treated as a failure and will be logged.
+注意：脚本必须返回成功退出代码 (0) 才能被视为成功。任何非零退出代码都将被视为失败并被记录。

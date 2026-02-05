@@ -1,36 +1,36 @@
-# Using the OpenID Connect Strategy on MeshCentral
+# 在 MeshCentral 上使用 OpenID Connect 策略
 
-## Overview
+## 概述
 
-### Introduction
+### 介绍
 
-There is a lot of information to go over, but first, why OpenID Connect?
+有很多信息需要了解，但首先，为什么是 OpenID Connect？
 
-Esentially its because its both based on a industry standard authorization protocol, and is becoming an industry standard authentication protocol. Put simply it's reliable and reusable, and we use OpenID Connect for exactly those reasons, almost every everyone does, and we want to be able to integrate with almost anyone. This strategy allows us to expand the potential of MeshCentral through the potential of OpenID Connect.
+本质上是因为它既基于行业标准授权协议，又正在成为行业标准认证协议。简单来说，它可靠且可重用，我们使用 OpenID Connect 正是因为这些原因，几乎每个人都这样做，我们希望能够与几乎任何人集成。该策略使我们能够通过 OpenID Connect 的潜力来扩展 MeshCentral 的潜力。
 
-In this document, we will learn about the OpenID Connect specification at a high level, and then use that information to configure the OpenID Connect strategy for MeshCentral using a generic OpenID Connect compatible IdP. After that we will go over some advanced configurations and then continue by explaining how to use the new presets for popular IdPs, specifically Google or Azure. Then we will explore the configuration and usage of the groups feature.
+在本文档中，我们将在高层次上了解 OpenID Connect 规范，然后使用该信息使用通用的 OpenID Connect 兼容 IdP 为 MeshCentral 配置 OpenID Connect 策略。之后，我们将介绍一些高级配置，然后继续解释如何使用流行 IdP 的新预设，特别是 Google 或 Azure。然后我们将探索组功能的配置和使用。
 
-> ATTENTION: As of MeshCentral `v1.1.22` there are multiple config options being depreciated. Using any of the old configs will only generate a warning in the authlog and will not stop you from using this strategy at this time. If there is information found in both the new and old config locations the new config location will be used. We will go over the specifics later, now lets jump in.
+> 注意：从 MeshCentral `v1.1.22` 开始，有多个配置选项正在被弃用。目前使用任何旧配置只会在 authlog 中生成警告，不会阻止您使用此策略。如果在新旧配置位置都找到信息，将使用新配置位置。我们将在后面详细介绍，现在让我们开始。
 
-### Chart of Frequently Used Terms and Acronyms
-| Term | AKA | Descriptions |
+### 常用术语和缩写表
+| 术语 | 又称 | 说明 |
 | --- | --- | --- |
-| OAuth 2.0 | OAuth2 | OAuth 2.0 is the industry-standard protocol for user *authorization*. |
-| OpenID Connect | OIDC | Identity layer built on top of OAuth2 for user *authentication*. |
-| Identity Provider | IdP | The *service used* to provide authentication and authorization. |
-| Preset Configs | Presets | Set of *pre-configured values* to allow some specific IdPs to connect correctly. |
-| OAuth2 Scope | Scope | A flag *requesting access* to a specific resource or endpoint |
-| OIDC Claim | Claim | A *returned property* in the user info provided by your IdP |
-| User Authentication | AuthN | Checks if you *are who you say you are*. Example: Username and password authentication |
-| User Authorization  | AuthZ | Check if you have the *permissions* required to access a specific resource or endpoint |
+| OAuth 2.0 | OAuth2 | OAuth 2.0 是用户*授权*的行业标准协议。 |
+| OpenID Connect | OIDC | 构建在 OAuth2 之上的身份层，用于用户*认证*。 |
+| Identity Provider | IdP | 用于提供认证和授权的*服务*。 |
+| Preset Configs | Presets | 一组*预配置值*，允许某些特定 IdP 正确连接。 |
+| OAuth2 Scope | Scope | 一个*请求访问*特定资源或端点的标志 |
+| OIDC Claim | Claim | 您的 IdP 提供的用户信息中的*返回属性* |
+| User Authentication | AuthN | 检查您*是否是您所说的那个人*。示例：用户名和密码认证 |
+| User Authorization  | AuthZ | 检查您是否具有访问特定资源或端点所需的*权限* |
 
-### OpenID Connect Technology Overview
+### OpenID Connect 技术概述
 
-OpenID Connect is a simple identity layer built on top of the OAuth2 protocol. It allows Clients to verify the identity of the End-User based on the authentication performed by an “Authorization Server”, as well as to obtain basic profile information about the End-User in an interoperable and REST-like manner.
+OpenID Connect 是一个构建在 OAuth2 协议之上的简单身份层。它允许客户端基于"授权服务器"执行的认证来验证最终用户的身份，并以可互操作的 REST 方式获取有关最终用户的基本配置文件信息。
 
-OpenID Connect allows clients of all types, including Web-based, mobile, and JavaScript clients, to request and receive information about authenticated sessions and end-users. The specification suite is extensible, allowing participants to use optional features such as encryption of identity data, discovery of OpenID Providers, and logout, when it makes sense for them.
+OpenID Connect 允许各种类型的客户端，包括基于 Web 的、移动的和 JavaScript 客户端，请求和接收有关认证会话和最终用户的信息。该规范套件是可扩展的，允许参与者在有意义时使用可选功能，例如身份数据加密、OpenID 提供商发现和注销。
 
-That description was straight from [OpenID Connect Documentation](https://openid.net/connect/), but basically, OAuth2 is the foundation upon which OpenID Connect was built, allowing for wide ranging compatability and interconnection. OpenID Connect appends the secure user *authentication* OAuth2 is known for, with user *authorization* by allowing the request of additional *scopes* that provide additional *claims* or access to API's in an easily expandable way.
+该描述直接来自 [OpenID Connect 文档](https://openid.net/connect/)，但基本上，OAuth2 是构建 OpenID Connect 的基础，允许广泛的兼容性和互连。OpenID Connect 通过允许请求提供额外*声明*或访问 API 的额外*范围*，以易于扩展的方式，将 OAuth2 已知的安全用户*认证*与用户*授权*相结合。
 
 ### Annotations
 
@@ -43,7 +43,7 @@ The following errors can be found in the log file:
 
 > UNABLE_TO_GET_ISSUER_CERT_LOCALLY
 
-To solve this problem, the certificate chain in PEM format must be placed in the data directory and the following entry must be added to the docker-compose.yml file in the “environment” section:
+To solve this problem, the certificate chain in PEM format must be placed in the data directory and the following entry must be added to the docker-compose.yml file in the "environment" section:
 ```
     environment:
             - NODE_EXTRA_CA_CERTS=/opt/meshcentral/meshcentral-data/chain.pem
@@ -93,7 +93,7 @@ In this most basic of setups, you only need the URL of the issuer, as well as a 
 
 ### Overview
 
-There are plenty of options at your disposal if you need them. In fact, you can configure any property that node-openid-client supports. The openid-client module supports far more customization than I know what to do with, if you want to know more check out [node-openid-client on GitHub](https://github.com/panva/node-openid-client) for expert level configuration details. There are plenty of things you can configure with this strategy and there is a lot of decumentation behind the tools used to make this all happen. I strongly recommend you explore the [config schema](https://github.com/Ylianst/MeshCentral/blob/master/meshcentral-config-schema.json), and if you have a complicated config maybe check out the [openid-client readme](https://github.com/panva/node-openid-client/blob/main/docs/README.md). Theres a list of resources at the end if you want more information on any specific topics. In the meantime, let’s take a look at an example of what your config file could look with a slightly more complicated configuration, including multiple manually defined endpoints.
+There are plenty of options at your disposal if you need them. In fact, you can configure any property that node-openid-client supports. The openid-client module supports far more customization than I know what to do with, if you want to know more check out [node-openid-client on GitHub](https://github.com/panva/node-openid-client) for expert level configuration details. There are plenty of things you can configure with this strategy and there is a lot of decumentation behind the tools used to make this all happen. I strongly recommend you explore the [config schema](https://github.com/Ylianst/MeshCentral/blob/master/meshcentral-config-schema.json), and if you have a complicated config maybe check out the [openid-client readme](https://github.com/panva/node-openid-client/blob/main/docs/README.md). Theres a list of resources at the end if you want more information on any specific topics. In the meantime, let's take a look at an example of what your config file could look with a slightly more complicated configuration, including multiple manually defined endpoints.
 
 #### *Advanced Config File Example*
 

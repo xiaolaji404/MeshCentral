@@ -1,24 +1,24 @@
-# 14.1 Tokens
+# 14.1 令牌
 
-## User Tokens
+## 用户令牌
 
-![User Tokens 1](images/user_tokens1.jpg)
+![用户令牌 1](images/user_tokens1.jpg)
 
-![User Tokens 2](images/user_tokens2.jpg)
+![用户令牌 2](images/user_tokens2.jpg)
 
-## Software Integration Tokens
+## 软件集成令牌
 
 !!!warning
-    You can only have a SINGLE loginTokenKey for your meshcentral server!<br>
-    So if you regenerate a loginTokenKey, the old one will be revoked/deleted!
+    您的 meshcentral 服务器只能拥有一个 loginTokenKey！<br>
+    因此，如果您重新生成 loginTokenKey，旧的令牌将被撤销/删除！
 
-You can create/view the Login Token Key with the following:
+您可以使用以下命令创建/查看登录令牌密钥：
 
 ```bash
 node node_modules/meshcentral --loginTokenKey
 ```
 
-You can then reset/revoke/renew the Login Token Key with the following to create a new one:
+然后，您可以使用以下命令重置/撤销/续期登录令牌密钥以创建新密钥：
 
 ```bash
 node node_modules/meshcentral --loginTokenKey --loginTokenGen

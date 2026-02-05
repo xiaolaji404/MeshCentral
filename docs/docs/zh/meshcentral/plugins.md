@@ -1,48 +1,48 @@
-# Plugins - Installation & Usage
+# 插件 - 安装与使用
 
 !!!note
-     Plugins as such receive **no support** by the main developers of MeshCentral. If you experience problems with MeshCentral please make sure to **disable all plugins before further troubleshooting**!
+     插件本身不受 MeshCentral 主要开发人员的**支持**。如果您遇到 MeshCentral 问题，请确保在进一步故障排除之前**禁用所有插件**！
 
-## Use Cases
+## 用例
 
-Certain feature requests may not be suitable for all MeshCentral users and thus are available as a plugin. Furthermore users can develop their own plugins - as described further below - to extend functionality or benefit from integrating MeshCentral into their existing application environment.
+某些功能请求可能不适合所有 MeshCentral 用户，因此可作为插件使用。此外，用户可以开发自己的插件 - 如下所述 - 以扩展功能或受益于将 MeshCentral 集成到其现有的应用环境中。
 
-## List of publically available plugins
+## 公开可用插件列表
 
 <https://github.com/topics/meshcentral-plugin>
 
-## Installation of a plugin
+## 插件安装
 
-1. First please make sure that you enable plugins in the configuration
+1. 首先，请确保在配置中启用插件
    >"plugins": {
    >    "enabled": true
    >},
-2. Restart MeshCentral if you needed to change the configuration.
-2. Log into MeshCentral as full administrator.
-3. Go my `My Server` -> `Plugins`, then hit the Download plugin button.
-4. A dialog opens requesting a URL, e.g. put in: <https://github.com/ryanblenis/MeshCentral-ScriptTask>
-5. The plugin pops up in the plugin list below the download button, you can now configure and enable/disable it.
+2. 如果您需要更改配置，请重新启动 MeshCentral。
+2. 以完全管理员身份登录 MeshCentral。
+3. 转到 `我的服务器` -> `插件`，然后点击下载插件按钮。
+4. 将打开一个对话框，要求输入 URL，例如输入：<https://github.com/ryanblenis/MeshCentral-ScriptTask>
+5. 插件将显示在下载按钮下方的插件列表中，您现在可以配置和启用/禁用它。
 
-# Plugins - Development & Hooks
+# 插件 - 开发与钩子
 
 !!!note
-     Plugins as such receive **no support** by the main developers of MeshCentral. If you experience problems with MeshCentral please make sure to **disable all plugins before further troubleshooting**!
+     插件本身不受 MeshCentral 主要开发人员的**支持**。如果您遇到 MeshCentral 问题，请确保在进一步故障排除之前**禁用所有插件**！
 
-## Overview
+## 概述
 
-Not all feature requests may be suitable for all MeshCentral users and thus can't be integrated into MeshCentral directly. Hwoever, Instead of maintaining a complete fork of MeshCentral it is much easier to extend MeshCentral's functionality using hooks and writing plugins for it.
+并非所有功能请求都适合所有 MeshCentral 用户，因此无法直接集成到 MeshCentral 中。然而，与其维护 MeshCentral 的完整分支，不如使用钩子并为其编写插件来扩展 MeshCentral 的功能，这要容易得多。
 
-## Anatomy of a plugin:
+## 插件结构：
 
     - plugin_name/
     -- config.json
     -- plugin_name.js
-    -- modules_meshcore/ // optional
-    --- plugin_name.js 	// optional
+    -- modules_meshcore/ // 可选
+    --- plugin_name.js 	// 可选
 
-## Plugin Configuration File
+## 插件配置文件
 
-A valid JSON object within a file named `config.json` in the root folder of your project. An example:
+位于项目根文件夹中名为 `config.json` 的文件内的有效 JSON 对象。示例：
 
     {
       "name": "Plugin Name",
@@ -65,76 +65,76 @@ A valid JSON object within a file named `config.json` in the root folder of your
 
 ## Configuration File Properties
 
-| Field             | Required | Type        | Description                                                  |
+| 字段             | 必需 | 类型        | 说明                                                  |
 | ----------------- | -------- | ----------- | ------------------------------------------------------------ |
-| name              | Yes      | string      | a human-readable name for the plugin                         |
+| name              | 是      | string      | 插件的人类可读名称                         |
 | shortName         | Yes      | string      | an alphanumeric, unique short identifier for the plugin (will be used to access your functions throughout the project |
 | version           | Yes      | string      | the current version of the plugin                            |
 | author            | No       | string      | the author's name                                            |
-| description       | Yes      | string      | a short, human-readable description of what the plugin does  |
-| hasAdminPanel     | Yes      | boolean     | `true` or `false`, indicates whether or not the plugin will offer its own administrative interface |
-| homepage          | Yes      | string      | the URL of the projects homepage                             |
-| changelogUrl      | Yes      | string      | the URL to the changelog of the project                      |
-| configUrl         | Yes      | string      | the URL to the config.json of the project                    |
-| downloadUrl       | Yes      | string      | the URL to a ZIP of the project (used for installation/upgrades) |
-| repository        | Yes      | JSON object | contains the following attributes                            |
-| repository.type   | Yes      | string      | valid values are `git` and in the future, `npm` will also be supported. |
-| repository.url    | Yes      | string      | the URL to the project's repository                          |
-| versionHistoryUrl | No       | string      | the URL to the project's versions/tags                       |
-| meshCentralCompat | Yes      | string      | the minimum version string of required compatibility with the MeshCentral server, can be formatted as "0.1.2-c" or ">=0.1.2-c". Currently only supports minimum version, not full semantic checking. |
+| description       | Yes      | string      | 插件功能的简短人类可读描述  |
+| hasAdminPanel     | Yes      | boolean     | `true` 或 `false`，指示插件是否提供自己的管理界面 |
+| homepage          | Yes      | string      | 项目主页的 URL                             |
+| changelogUrl      | Yes      | string      | 项目变更日志的 URL                      |
+| configUrl         | Yes      | string      | 项目 config.json 的 URL                    |
+| downloadUrl       | Yes      | string      | 项目 ZIP 文件的 URL（用于安装/升级） |
+| repository        | Yes      | JSON object | 包含以下属性                            |
+| repository.type   | Yes      | string      | 有效值为 `git`，将来也将支持 `npm`。 |
+| repository.url    | Yes      | string      | 项目仓库的 URL                          |
+| versionHistoryUrl | No       | string      | 项目版本/标签的 URL                       |
+| meshCentralCompat | Yes      | string      | 与 MeshCentral 服务器兼容性的最低版本字符串，可以格式化为 "0.1.2-c" 或 ">=0.1.2-c"。目前仅支持最低版本，不支持完整的语义检查。 |
 
-## Plugin Hooks
+## 插件钩子
 
-In essence, hooks are locations in the code which enable developers to tap into a module to either provide alternative behavior or to respond to an event.
+本质上，钩子是代码中的位置，使开发人员能够接入模块以提供替代行为或响应事件。
 
-These are separated into the following categories depending on the type of functionality the plugin should offer.
+这些根据插件应提供的功能类型分为以下类别。
 
-- Web UI, to modify the MeshCentral admin interface
-- Back End, to modify core functionality of the server and communicate with the Web UI layer as well as the Mesh Agent (Node) layer to send commands and data
-- Mesh Agent (Node), to introduce functionality to each agent
+- Web UI，用于修改 MeshCentral 管理界面
+- 后端，用于修改服务器的核心功能，并与 Web UI 层以及 Mesh 代理（节点）层通信以发送命令和数据
+- Mesh 代理（节点），用于为每个代理引入功能
 
-### Web UI Hooks
+### Web UI 钩子
 
-- `onDeviceRefreshEnd`: called when a device is selected in the MeshCentral web interface
-- `registerPluginTab`: callable when a device is selected in the MeshCentral web interface to register a new tab for plugin data, if required. Accepts an object, or function that returns an object, with the following properties: { tabId: "yourShortNameHere", tabTitle: "Your Display Name"}. A tab and div with the associated ID and title will be created for your use
-- `onDesktopDisconnect`: called when a remote desktop session is disconnected
-- `onWebUIStartupEnd`: called when the page has loaded for the first time after a login / refresh
-- `goPageStart`: called before page changes take effect. Passes 2 arguments (<page number> : int, <event> : Event)
-- `goPageEnd`: called after page changes take effect. Passes 2 arguments (<page number> : int, <event> : Event)
+- `onDeviceRefreshEnd`：在 MeshCentral Web 界面中选择设备时调用
+- `registerPluginTab`：在 MeshCentral Web 界面中选择设备时调用，以注册一个新选项卡用于插件数据（如果需要）。接受一个对象或返回对象的函数，具有以下属性：{ tabId: "yourShortNameHere", tabTitle: "Your Display Name"}。将创建一个具有关联 ID 和标题的选项卡和 div 供您使用
+- `onDesktopDisconnect`：在远程桌面会话断开连接时调用
+- `onWebUIStartupEnd`：在页面首次加载后（登录/刷新后）调用
+- `goPageStart`：在页面更改生效之前调用。传递 2 个参数（<page number> : int, <event> : Event）
+- `goPageEnd`：在页面更改生效后调用。传递 2 个参数（<page number> : int, <event> : Event）
 
-#### Exports
+#### 导出
 
-Any function can be exported to the Web UI layer by adding the name of the function to an `exports` array in the plugin object.
+任何函数都可以通过将函数名称添加到插件对象中的 `exports` 数组来导出到 Web UI 层。
 
-### Back End Hooks
+### 后端钩子
 
-- `server_startup`: called once when the server starts (or when the plugin is first installed)
-- `hook_agentCoreIsStable`: called once when an agent initially checks in
-- `hook_processAgentData`: called each time an agent transmits data back to the server
-- `hook_userLoggedIn`: called when a user has logged into the web interface
-- `hook_setupHttpHandlers`: called before all http handlers are setup
+- `server_startup`：服务器启动时调用一次（或首次安装插件时）
+- `hook_agentCoreIsStable`：代理首次签入时调用一次
+- `hook_processAgentData`：每次代理将数据传输回服务器时调用
+- `hook_userLoggedIn`：用户登录到 Web 界面时调用
+- `hook_setupHttpHandlers`：在设置所有 HTTP 处理程序之前调用
 
-### Mesh Agent
+### Mesh 代理
 
-Use of the optional file `plugin_name.js` in the optional folder `modules_meshcore` will include the file in the default meshcore file sent to each endpoint. This is useful to add functionality on each of the endpoints.
+在可选文件夹 `modules_meshcore` 中使用可选文件 `plugin_name.js` 会将该文件包含在发送到每个端点的默认 meshcore 文件中。这对于在每个端点上添加功能非常有用。
 
-## Structure
+## 结构
 
-Much of MeshCentral revolves around returning objects for your structures, and plugins are no different. Within your plugin you can traverse all the way up to the web server and MeshCentral Server classes to access all the functionality those layers provide. This is done by passing the current object to newly created objects, and assigning that reference to a `parent` variable within that object.
+MeshCentral 的许多功能都围绕为您的结构返回对象，插件也不例外。在插件中，您可以一直遍历到 Web 服务器和 MeshCentral 服务器类，以访问这些层提供的所有功能。这是通过将当前对象传递给新创建的对象，并将该引用分配给该对象中的 `parent` 变量来完成的。
 
 
 ## Ping-Pong
 
-If you build a plugin which makes use of `meshrelay.ashx`, keep in mind to either handle ping-pong messages (`serverPing`, `serverPong`) on the control channel or to request MeshCentral to not send such messages through sending the `noping=1` parameter in the connection URL. For a deeper sight search for "PING/PONG" in `meshrelay.js`.
+如果您构建使用 `meshrelay.ashx` 的插件，请记住在控制通道上处理 ping-pong 消息（`serverPing`, `serverPong`），或请求 MeshCentral 通过在连接 URL 中发送 `noping=1` 参数来不发送此类消息。如需更深入的了解，请在 `meshrelay.js` 中搜索 "PING/PONG"。
 
-## Versioning
+## 版本控制
 
-Versioning your plugin correctly and consistently is essential to ensure users of your plugin are prompted to upgrade when it is available. Semantic versioning is recommended.
+正确且一致地对插件进行版本控制对于确保插件用户在可用时被提示升级至关重要。建议使用语义化版本控制。
 
-## Changelog
+## 变更日志
 
-A changelog is highly recommended so that your users know what's changed since their last version.
+强烈建议添加变更日志，以便您的用户知道自上次版本以来发生了什么变化。
 
-## Sample Plugin
+## 示例插件
 
-[MeshCentral-Sample](https://github.com/ryanblenis/MeshCentral-Sample) is a simple plugin that, upon disconnecting from remote desktop, prompts the user to enter a manual event (note), pre-filled in with the date and timestamp.
+[MeshCentral-Sample](https://github.com/ryanblenis/MeshCentral-Sample) 是一个简单的插件，在从远程桌面断开连接时，提示用户输入手动事件（备注），并预填充日期和时间戳。

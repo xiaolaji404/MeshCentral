@@ -1,22 +1,22 @@
-# Tips n' Tricks
+# 技巧与窍门
 
-## Colors in SSH
+## SSH 中的颜色
 
-The SSH terminal does support color. The issue is going to be the terminal configuration of the shell. Try typing this:
+SSH 终端确实支持颜色。问题将是 shell 的终端配置。尝试输入这个：
 
 ```bash
 ls -al --color /tmp
 ```
 
-## Fancy config editing with VS Code
+## 使用 VS Code 进行高级配置编辑
 
-A common problem in the issues is an incorrect config.json. What makes a config incorrect? How can you verify your config is correct?
+问题中一个常见的问题是 config.json 不正确。什么使配置不正确？如何验证您的配置是正确的？
 
-Easy! Use Visual Studio Code to edit your config.json and add the schema at the top.
+很简单！使用 Visual Studio Code 编辑您的 config.json 并在顶部添加模式。
 
-If you haven't already, download VS code.
-Download or copy the config.json to your computer.
-Open config.json in code and add the schema as the top line. This schema is the raw JSON file in the MeshCentral repo.
+如果您还没有下载 VS Code。
+下载或复制 config.json 到您的计算机。
+在 Code 中打开 config.json 并将模式作为顶行添加。此模式是 MeshCentral 仓库中的原始 JSON 文件。
 
 ```json
 {
@@ -27,19 +27,19 @@ Open config.json in code and add the schema as the top line. This schema is the 
 }
 ```
 
-Now you have autocomplete, auto-format and validation for your config.json! If you start typing, Code will show the values that are valid for the location you are editing. Words with a red squiggle line are errors. Words with a orange squiggle line are warnings. Hover over both to see the error message and possible fixes. Code can even format your config.
+现在您拥有 config.json 的自动完成、自动格式化和验证功能！如果您开始输入，Code 将显示对您正在编辑的位置有效的值。带有红色波浪线的单词是错误。带有橙色波浪线的单词是警告。将鼠标悬停在两者上可查看错误消息和可能的修复。Code 甚至可以格式化您的配置。
 
-While this is a huge step up, it's not perfect. If you notice, there are some invalid keys in the screenshot. This is perfectly valid JSON and MeshCentral will ignore them (maybe?). If you paste some configs into the wrong section, code will not tell you it's in the wrong section. Autocomplete will tell you what keys are valid and the type of the value (i.e. string, number, boolean).
+虽然这是一个巨大的进步，但它并不完美。如果您注意到，屏幕截图中有一些无效的键。这是完全有效的 JSON，MeshCentral 将忽略它们（也许？）。如果您将某些配置粘贴到错误的部分，Code 不会告诉您它在错误的部分。自动完成将告诉您哪些键是有效的以及值的类型（即字符串、数字、布尔值）。
 
-Hopefully this will help verify your config is syntactically correct and prevent needless formatting errors, misspellings, etc.
+希望这将有助于验证您的配置在语法上是正确的，并防止不必要的格式化错误、拼写错误等。
 
 ![](images/2023-02-24vscodejsonediting.jpg)
 
-## Downloading Folders
+## 下载文件夹
 
-If you would like to download folders via Files simply select folder/files then use the zip and download the zip file by clicking on it.
+如果您想通过文件下载文件夹，只需选择文件夹/文件，然后使用 zip 并点击它来下载 zip 文件。
 
-## Share device groups with AD logins
-If you would like to share device groups with different AD users.
+## 与 AD 登录共享设备组
+如果您想与不同的 AD 用户共享设备组。
 
-In the config.json set "ldapuserkey" to "sAMAccountName".
+在 config.json 中将 "ldapuserkey" 设置为 "sAMAccountName"。

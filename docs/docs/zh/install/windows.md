@@ -1,71 +1,71 @@
-# Quickstart
+# 快速开始
 
-## 🪟 Quick Start on Windows with the Installer
+## 🪟 使用安装程序在 Windows 上快速开始
 
-For Microsoft Windows users, the easiest way to install MeshCentral is by using the dedicated installer tool. This tool automates the setup, including checking for and installing **Node.js** if necessary.
+对于 Microsoft Windows 用户，安装 MeshCentral 最简单的方法是使用专用的安装工具。该工具可自动完成设置，包括在需要时检查并安装 **Node.js**。
 
-You can download the MeshCentral installer from the official website or by clicking [this link](https://www.meshcommander.com/meshcentral2).
+您可以从官方网站下载 MeshCentral 安装程序，或点击[此链接](https://www.meshcommander.com/meshcentral2)。
 
-> **Recommendation:** We advise running the installer on a modern version of Windows (e.g., Windows 8.1, Windows 10, or Windows Server 2012 or newer).
+> **建议：** 我们建议在现代版本的 Windows 上运行安装程序（例如 Windows 8.1、Windows 10 或 Windows Server 2012 或更新版本）。
 
-### Installation Prompts Explained
+### 安装提示说明
 
-The installer will guide you through a few key settings:
+安装程序将引导您完成几个关键设置：
 
-| Setting | Description |
+| 设置 | 说明 |
 | :--- | :--- |
-| **Multi-user Server** | **Enabled (Checked):** The server is open to the public. Users can create accounts and manage their own devices. **Disabled (Unchecked):** The server is limited to a single-user mode, with no login screen, accessible only from the server host machine. |
-| **Auto-update Server** | **Enabled:** The server automatically checks for new releases daily (typically between 00:00 and 01:00 local time) and performs an update. The server will be inaccessible during the update process. |
-| **Server Mode** | Choose how agents find the server: |
-| *LAN Mode* | Recommended for small, local networks. The server does not need a fixed IP or DNS name. |
-| *WAN/Hybrid Mode* | Required for managing devices over the internet. You **must** enter the server's public **DNS name** or **static IP address** into the **Server Name** field. This name must be correct or agents will fail to connect. If unsure, start with **LAN Mode**. |
+| **多用户服务器** | **启用（勾选）：** 服务器对公众开放。用户可以创建账户并管理自己的设备。**禁用（未勾选）：** 服务器仅限于单用户模式，没有登录界面，只能从服务器主机访问。 |
+| **自动更新服务器** | **启用：** 服务器每天自动检查新版本（通常在本地时间 00:00 至 01:00 之间）并执行更新。更新过程中服务器将无法访问。 |
+| **服务器模式** | 选择代理如何找到服务器： |
+| *局域网模式* | 推荐用于小型本地网络。服务器不需要固定 IP 或 DNS 名称。 |
+| *广域网/混合模式* | 需要通过互联网管理设备时必须使用。您**必须**在服务器的公共 **DNS 名称**或**静态 IP 地址**输入到**服务器名称**字段中。该名称必须正确，否则代理将无法连接。如果不确定，请从**局域网模式**开始。 |
 
-Once installed, MeshCentral runs as a **background Windows Service** and can be accessed via the web browser link provided by the installer.
+安装完成后，MeshCentral 将作为**后台 Windows 服务**运行，可以通过安装程序提供的网页浏览器链接访问。
 
-### Updating and Maintenance
+### 更新和维护
 
-The installation tool can be run again at any time to:
+安装工具可以随时再次运行以：
 
-* **Perform a Server Update:** The tool compares your installed version to the latest one on NPM.
-* **Re-install** the server.
-* **Un-install** the server.
+* **执行服务器更新：** 该工具会将您安装的版本与 NPM 上的最新版本进行比较。
+* **重新安装**服务器。
+* **卸载**服务器。
 
 ---
 
-## 🔒 Windows Defender Firewall Settings
+## 🔒 Windows Defender 防火墙设置
 
-The installer automatically configures the **Windows Defender Firewall** to allow MeshCentral to accept incoming connections.
+安装程序会自动配置 **Windows Defender 防火墙**，以允许 MeshCentral 接受传入连接。
 
-By default, MeshCentral uses the following ports:
-* **TCP Ports:** **80** (HTTP), **443** (HTTPS), and **4433** (Intel® AMT CIRA).
-* **UDP Port:** **16990** (Added for server discovery in LAN or Hybrid mode).
+默认情况下，MeshCentral 使用以下端口：
+* **TCP 端口：** **80**（HTTP）、**443**（HTTPS）和 **4433**（Intel® AMT CIRA）。
+* **UDP 端口：** **16990**（用于局域网或混合模式下的服务器发现）。
 
-If you performed an advanced NPM installation or need to change the default ports, you may need to manually modify these firewall rules.
+如果您执行了高级 NPM 安装或需要更改默认端口，您可能需要手动修改这些防火墙规则。
 
-### Accessing Firewall Settings
+### 访问防火墙设置
 
-1.  Open **Control Panel**.
-2.  Go to **System and Security**.
-3.  Click **Windows Defender Firewall**.
-4.  Click **Advanced Settings** on the left side.
-5.  Select **Inbound Rules**.
+1.  打开**控制面板**。
+2.  进入**系统和安全**。
+3.  点击 **Windows Defender 防火墙**。
+4.  点击左侧的**高级设置**。
+5.  选择**入站规则**。
 
-If you used the installer, you should see rules named **`MeshCentral Server TCP ports`** and optionally **`MeshCentral Server UDP ports`**.
+如果您使用了安装程序，您应该会看到名为 **`MeshCentral Server TCP ports`** 和可选的 **`MeshCentral Server UDP ports`** 的规则。
 
-### 1. Editing Existing Rules
+### 1. 编辑现有规则
 
-To change the allowed ports (e.g., if you changed the MeshCentral configuration):
-1.  **Double-click** the existing rule (e.g., `MeshCentral Server TCP ports`).
-2.  Go to the **Protocols and Ports** tab.
-3.  Modify the **Local ports** field.
+要更改允许的端口（例如，如果您更改了 MeshCentral 配置）：
+1.  **双击**现有规则（例如 `MeshCentral Server TCP ports`）。
+2.  进入**协议和端口**选项卡。
+3.  修改**本地端口**字段。
 
-### 2. Adding New Rules
+### 2. 添加新规则
 
-To create a new inbound firewall rule:
-1.  Click **New Rule...** on the right side.
-2.  Select **Port** and click **Next**.
-3.  Choose either **TCP** or **UDP**.
-4.  Select **Specific local ports** and enter the port numbers (e.g., `80, 443, 4433`). Click **Next**.
-5.  Ensure **Allow the connection** is selected and click **Next**.
-6.  Select the profiles (Domain, Private, Public) where the rule should apply and click **Next**.
-7.  Enter a descriptive **Name** for the rule and click **Finish**.
+要创建新的入站防火墙规则：
+1.  点击右侧的**新建规则...**。
+2.  选择**端口**并点击**下一步**。
+3.  选择 **TCP** 或 **UDP**。
+4.  选择**特定本地端口**并输入端口号（例如 `80, 443, 4433`）。点击**下一步**。
+5.  确保选择**允许连接**并点击**下一步**。
+6.  选择规则应适用的配置文件（域、专用、公用）并点击**下一步**。
+7.  输入描述性的规则**名称**并点击**完成**。

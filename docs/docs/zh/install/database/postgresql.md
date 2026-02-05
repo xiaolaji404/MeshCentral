@@ -1,18 +1,18 @@
-# This section will go into how to configure PostgreSQL as a database backend.
+# 本节将介绍如何将 PostgreSQL 配置为数据库后端。
 
-Following [the schema](https://github.com/Ylianst/MeshCentral/blob/master/meshcentral-config-schema.json) we make the following changes to our `config.json`.<br>
-Some requires keys have been omitted to further the focus on database configuration. Don't remove these as well.
+根据[模式](https://github.com/Ylianst/MeshCentral/blob/master/meshcentral-config-schema.json)，我们对 `config.json` 进行如下更改。<br>
+为了更专注于数据库配置，一些必需的键已被省略。但请不要删除这些键。
 
 ---
 
-### MeshCentral Cheatsheet:
+### MeshCentral 速查表：
 
-The postgres installation inside `settings` is rather straightforward if you are familiar with it on MeshCentral its side.
+如果您熟悉 MeshCentral 方面的 postgres 安装，`settings` 中的 postgres 配置相当简单。
 
 ```json
 {
   "$schema": "https://raw.githubusercontent.com/Ylianst/MeshCentral/master/meshcentral-config-schema.json",
-  "__comment__": "Omitted these keys to focus on the database",
+  "__comment__": "为了专注于数据库配置，省略了这些键",
   "settings": {
     "postgres": {
         "host": "my-postgresql-hostname",
@@ -24,34 +24,34 @@ The postgres installation inside `settings` is rather straightforward if you are
   },
   "domains": {
     "": {
-      "__comment__": "Omitted these keys to focus on the database",
+      "__comment__": "为了专注于数据库配置，省略了这些键",
     }
   },
   "_letsencrypt": {
-    "__comment__": "Omitted these keys to focus on the database",
+    "__comment__": "为了专注于数据库配置，省略了这些键",
   }
 }
 ```
 
-> More options are available if needed. Refer to the schema above.
+> 如有需要，可以使用更多选项。请参阅上面的模式。
 
-### Postgres Cheatsheet
+### Postgres 速查表
 
 ```bash
-# Log into the server
+# 登录到服务器
 psql -U postgres
 ```
 
 ```sql
 
--- Create the database user
+-- 创建数据库用户
 postgres=# CREATE USER meshcentral WITH PASSWORD 'your-very-strong-password';
 CREATE ROLE
 
--- Create the database and set the above user as owner
+-- 创建数据库并将上述用户设置为所有者
 postgres=# CREATE DATABASE meshcentral OWNER meshcentral;
 CREATE DATABASE
 
--- Exit the database
+-- 退出数据库
 postgres=# exit
 ```

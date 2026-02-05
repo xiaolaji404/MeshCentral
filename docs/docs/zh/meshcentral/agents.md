@@ -1,82 +1,82 @@
-# Mesh Agents
+# Mesh 代理
 
 ## Windows
 
-Default Install Path: `c:\Program Files\Mesh Agent`
+默认安装路径：`c:\Program Files\Mesh Agent`
 
-Application Path: `c:\Program Files\Mesh Agent\meshagent.exe`
+应用程序路径：`c:\Program Files\Mesh Agent\meshagent.exe`
 
-Application database Path: `c:\Program Files\Mesh Agent\meshagent.db`
+应用程序数据库路径：`c:\Program Files\Mesh Agent\meshagent.db`
 
-Application Log Path: `c:\Program Files\Mesh Agent\meshagent.log`
+应用程序日志路径：`c:\Program Files\Mesh Agent\meshagent.log`
 
-xxx Path: `c:\Program Files\Mesh Agent\meshagent.msh`
+xxx 路径：`c:\Program Files\Mesh Agent\meshagent.msh`
 
-=== ":material-console-line: Status"
+=== ":material-console-line: 状态"
 
-    - Start: `net start "mesh agent"`
-    - Stop: `net stop "mesh agent"`
-    - Restart: `net restart "mesh agent"`
-    - Status: Needs info
+    - 启动：`net start "mesh agent"`
+    - 停止：`net stop "mesh agent"`
+    - 重启：`net restart "mesh agent"`
+    - 状态：需要信息
 
-=== ":material-console-line: Troubleshooting"
+=== ":material-console-line: 故障排除"
 
-    Troubleshooting steps: Needs info
+    故障排除步骤：需要信息
 
 ## Linux / BSD
 
-Uninstall: `sudo /usr/local/mesh_services/meshagent/[agent-name]/meshagent -fulluninstall`
+卸载：`sudo /usr/local/mesh_services/meshagent/[agent-name]/meshagent -fulluninstall`
 
-## Apple macOS Binary Installer
+## Apple macOS 二进制安装程序
 
-Default Install Path: `/usr/local/mesh_services/meshagent/meshagent`
+默认安装路径：`/usr/local/mesh_services/meshagent/meshagent`
 
-Launches from `/Library/LaunchAgents/meshagent.plist`
+从 `/Library/LaunchAgents/meshagent.plist` 启动
 
-Controlling agent
+控制代理
 
 ```bash
 launchctl stop meshagent
 launchctl start meshagent
 ```
 
-Install: 
+安装：
 
-Uninstall: `sudo /usr/local/mesh_services/meshagent/[agent-name]/meshagent -fulluninstall`
+卸载：`sudo /usr/local/mesh_services/meshagent/[agent-name]/meshagent -fulluninstall`
 
-## Apple macOS Universal
+## Apple macOS 通用版
 
-For OSx 11+ including Big Sur, Monterey and later
+适用于 OSx 11+，包括 Big Sur、Monterey 及更高版本
 
 ## Apple macOS
 
-For macOS 10.x including Catalina, Mojave, High Sierra, Sierra, El Capitan, Yosemite, Mavericks, Mountain Lion and earlier.
+适用于 macOS 10.x，包括 Catalina、Mojave、High Sierra、Sierra、El Capitan、Yosemite、Mavericks、Mountain Lion 及更早版本。
 
-## Mobile Device (Android)
+## 移动设备（Android）
 
-## MeshCentral Assistant
+## MeshCentral 助手
 
-See [Assistant](assistant.md)
+参见[助手](assistant.md)
 
-## Apple MacOS Binary Installer
+## Apple MacOS 二进制安装程序
 
-## Agent Commands
+## 代理命令
 
-**agentmsg** 
-: Add/Remove badged messages to the device's web ui
+**agentmsg**
+：向设备的 Web UI 添加/删除带徽章的消息
 ```
   agentmsg add "[message]" [iconIndex]
   agentmsg remove [index]
   agentmsg list
 ```
 **agentsize**
-: Returns the binary size of the agent
+：返回代理的二进制大小
 
 **agentupdate**
-: Manually trigger an agent self-update
+：手动触发代理自更新
 
 **alert**
-: Display an alert dialog on the logged in session
+：在登录会话上显示警报对话框
 ```
 alert TITLE, CAPTION [, TIMEOUT]
 ```
@@ -92,7 +92,7 @@ alert TITLE, CAPTION [, TIMEOUT]
 **args**
 
 **av**
-: Displays Antivirus State
+：显示防病毒状态
 
 **coredump**
 
@@ -101,10 +101,10 @@ alert TITLE, CAPTION [, TIMEOUT]
 **cpuinfo**
 
 **cs**
-: Display Windows Connected Standby State
+：显示 Windows 连接待机状态
 
 **dbcompact**
-: Compacts the agent database
+：压缩代理数据库
 
 **dbget**
 
@@ -113,37 +113,37 @@ alert TITLE, CAPTION [, TIMEOUT]
 **dbset**
 
 **dnsinfo**
-: Display DNS server info
+：显示 DNS 服务器信息
 
 **domain**
-: Display domain metadata
+：显示域元数据
 
 **errorlog**
 
 **eval**
-: executes javascript on the agent
+：在代理上执行 JavaScript
 ```
 eval [code]
 ```
 
 **fdcount**
-: Returns the number of active descriptors in the event loop
+：返回事件循环中活动描述符的数量
 
 **fdsnapshot**
-: Returns detailed descriptor/handle/timer metadata
+：返回详细的描述符/句柄/定时器元数据
 
 **getclip**
-: Fetches clipboard data from agent
+：从代理获取剪贴板数据
 
 **getscript**
 
 **help**
-: Returns the list of supported console commands
+：返回支持的控制台命令列表
 
 **httpget**
 
 **info**
-: Returns general information about the agent, such as connected state, loaded modules, LMS state, etc
+：返回有关代理的一般信息，例如连接状态、加载的模块、LMS 状态等
 
 **kill**
 : Sends a SIGKILL signal to the specified PID
@@ -166,30 +166,30 @@ log [message]
 ```
 
 **ls**
-: Enumerates the files in the agent's install folder
+：枚举代理安装文件夹中的文件
 
 **mousetrails**
-: Enables/Disables Mouse Trails Accessibility on Windows. To change setting, specify a positive integer representing the number of latent cursors, where 0 is disable
+：在 Windows 上启用/禁用鼠标轨迹辅助功能。要更改设置，请指定一个正整数，表示潜在光标的数量，其中 0 为禁用
 ```
 mousetrails [n]
 ```
 
 **msh**
-: Displays the loaded msh settings file
+：显示加载的 msh 设置文件
 
 **netinfo**
-: Displays network interface information
+：显示网络接口信息
 
 **notify**
-: Display a notification on the web interface
+：在 Web 界面上显示通知
 
 **openurl**
 
 **osinfo**
-: Displays OS information
+：显示操作系统信息
 
 **parseuri**
-: Parses the specified URI, and displays the parsed output
+：解析指定的 URI，并显示解析后的输出
 ``` 
 parseuri [uri]
 ```
@@ -265,18 +265,18 @@ setdebug [target]
 ```
 
 **smbios**
-: Displays the parsed SMBIOS metadata
+：显示解析后的 SMBIOS 元数据
 
 **startupoptions**
-: Displays the command-line options that the agent was started with
+：显示代理启动时使用的命令行选项
 
 **sysinfo**
-: Collects and displays telemetry on the platform
+：收集并显示平台的遥测数据
 
 **task**
 
 **taskbar**
-: Hides or shows the Windows System task bar, optionally on the specified Terminal Server Session ID
+：隐藏或显示 Windows 系统任务栏，可选在指定的终端服务器会话 ID 上
 ```
 taskbar HIDE|SHOW [TSID]
 ```

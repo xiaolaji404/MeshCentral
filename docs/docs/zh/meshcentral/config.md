@@ -1,42 +1,42 @@
-# Configuration Options
+# 配置选项
 
-There are MANY configuration options available with meshcentral, search this file for options: <https://github.com/Ylianst/MeshCentral/blob/master/meshcentral-config-schema.json>
+MeshCentral 有许多可用的配置选项，在此文件中搜索选项：<https://github.com/Ylianst/MeshCentral/blob/master/meshcentral-config-schema.json>
 
-Some options you can find relate to:
+您可以找到的一些选项包括：
 
 * DNS
 * HTTPS
-* MPS (Management Presence Server)
+* MPS（管理存在服务器）
 * MongoDB
 * MariaDB
 * SQLite3
 * MySQL
 * PostgreSQL
 * AceBase
-* WAN (Wide Area Network)
-* LAN (Local Area Network)
-* Maintenance Mode
-* Session Cookie
-* Database Encryption
-* Web Relay
-* Agent Connection
-* TLS (Transport Layer Security)
+* WAN（广域网）
+* LAN（局域网）
+* 维护模式
+* 会话 Cookie
+* 数据库加密
+* Web 中继
+* 代理连接
+* TLS（传输层安全）
 * WebRTC
-* Web Push Notifications
-* Auto Backup
+* Web 推送通知
+* 自动备份
 * Crowdsec
-* IP KVM (Keyboard, Video, Mouse over IP)
-* Mesh Router
+* IP KVM（基于 IP 的键盘、视频、鼠标）
+* Mesh 路由器
 * Syslog
 * WebDAV
-* Certificates and Authentication
-* MeshCentral Server Settings
-* Device Management
-* User Permissions
-* Remote Desktop Configuration
+* 证书和认证
+* MeshCentral 服务器设置
+* 设备管理
+* 用户权限
+* 远程桌面配置
 
-and more!
+等等！
 
-![Server Options](images/2023-11-29_140845 - mesh json1.jpg)
+![服务器选项](images/2023-11-29_140845 - mesh json1.jpg)
 
-![Domain Options](images/2023-11-29_140845 - mesh json2.jpg)
+![域选项](images/2023-11-29_140845 - mesh json2.jpg)

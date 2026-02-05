@@ -1,19 +1,19 @@
-# This section will go into how to configure MySQL/MariaDB as a database backend.
+# 本节将介绍如何将 MySQL/MariaDB 配置为数据库后端。
 
-Following [the schema](https://github.com/Ylianst/MeshCentral/blob/master/meshcentral-config-schema.json) we make the following changes to our `config.json`.<br>
-Some requires keys have been omitted to further the focus on database configuration. Don't remove these as well.
+根据[模式](https://github.com/Ylianst/MeshCentral/blob/master/meshcentral-config-schema.json)，我们对 `config.json` 进行如下更改。<br>
+为了更专注于数据库配置，一些必需的键已被省略。但请不要删除这些键。
 
 ---
 
-### MeshCentral Cheatsheet:
+### MeshCentral 速查表：
 
-Database specific:
+数据库特定配置：
 
-MariaDB:
+MariaDB：
 ```json
 {
   "$schema": "https://raw.githubusercontent.com/Ylianst/MeshCentral/master/meshcentral-config-schema.json",
-  "__comment__": "Omitted these keys to focus on the database",
+  "__comment__": "为了专注于数据库配置，省略了这些键",
   "settings": {
     "mariaDB": {
         "host": "my-mariadb-hostname",
@@ -25,20 +25,20 @@ MariaDB:
   },
   "domains": {
     "": {
-      "__comment__": "Omitted these keys to focus on the database",
+      "__comment__": "为了专注于数据库配置，省略了这些键",
     }
   },
   "_letsencrypt": {
-    "__comment__": "Omitted these keys to focus on the database",
+    "__comment__": "为了专注于数据库配置，省略了这些键",
   }
 }
 ```
 
-Mysql:
+MySQL：
 ```json
 {
   "$schema": "https://raw.githubusercontent.com/Ylianst/MeshCentral/master/meshcentral-config-schema.json",
-  "__comment__": "Omitted these keys to focus on the database",
+  "__comment__": "为了专注于数据库配置，省略了这些键",
   "settings": {
     "mySQL": {
         "host": "my-mysql-hostname",
@@ -50,35 +50,35 @@ Mysql:
   },
   "domains": {
     "": {
-      "__comment__": "Omitted these keys to focus on the database",
+      "__comment__": "为了专注于数据库配置，省略了这些键",
     }
   },
   "_letsencrypt": {
-    "__comment__": "Omitted these keys to focus on the database",
+    "__comment__": "为了专注于数据库配置，省略了这些键",
   }
 }
 ```
 
-### MariaDB/MySQL Cheatsheet:
+### MariaDB/MySQL 速查表：
 
 ```bash
 mariadb -u root -p
 ```
-or
+或者
 ```bash
 mysql -u root -p
 ```
 
 ```sql
--- Create the database
+-- 创建数据库
 CREATE DATABASE meshcentral;
 
--- Create the user (restricting login to localhost)
+-- 创建用户（限制只能从本地登录）
 CREATE USER 'meshcentral'@'localhost' IDENTIFIED BY 'my-very-secure-password';
 
--- Grant privileges
+-- 授予权限
 GRANT ALL PRIVILEGES ON meshcentral.* TO 'meshcentral'@'localhost';
 
--- Apply changes
+-- 应用更改
 FLUSH PRIVILEGES;
 ```

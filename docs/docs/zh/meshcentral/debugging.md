@@ -1,16 +1,16 @@
-# Debugging
+# 调试
 
-## Websockets Video
+## Websockets 视频
 
-Make sure you understand how MeshCentral works with your browser using chrome developer tools.
+确保您了解 MeshCentral 如何使用 Chrome 开发者工具与您的浏览器一起工作。
 
 <div class="video-wrapper">
   <iframe width="320" height="180" src="https://www.youtube.com/embed/3vI4URd3VzU" frameborder="0" allowfullscreen></iframe>
 </div>
 
-## MeshCentral Server
+## MeshCentral 服务器
 
-### Useful config.js settings
+### 有用的 config.js 设置
 
 <https://github.com/Ylianst/MeshCentral/blob/master/meshcentral-config-schema.json>
 
@@ -23,9 +23,9 @@ Make sure you understand how MeshCentral works with your browser using chrome de
 "AgentWsCompression": false,
 ```
 
-### Understanding node and paths
+### 了解 node 和路径
 
-Note that when running MeshCentral, you should always run from the path that is parent to node_modules, so you do this:
+请注意，运行 MeshCentral 时，您应该始终从 node_modules 的父路径运行，因此您应该这样做：
 
 ```
 cd C:\Program Files\Open Source\MeshCentral

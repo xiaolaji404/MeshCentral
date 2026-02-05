@@ -1,8 +1,8 @@
-# Device Tabs
+# 设备选项卡
 
-## Search or Filter
+## 搜索或筛选
 
-You can search your list of agents using any of these criteria using the filter box (also viewable in the tooltip of the Filter box):
+您可以使用筛选框使用以下任何条件搜索代理列表（也可在筛选框的工具提示中查看）：
 
 ```
 user:xxx or u:xxx
@@ -20,9 +20,9 @@ wsc:nofirewall
 wsc:any
 ```
 
-## General
+## 常规
 
-For viewing general information about the agent
+用于查看有关代理的常规信息
 
 * Group
 * Description
@@ -39,32 +39,32 @@ For viewing general information about the agent
 * Notifications
 * Tags
 
-### Fields
+### 字段
 
-### Buttons
+### 按钮
 
-Actions
-Notes
-Log Event
-Message
-PDU On/Off/Control
-Chat
+操作
+备注
+记录事件
+消息
+PDU 开/关/控制
+聊天
 
-### 7 Day Power State
+### 7 天电源状态
 
 ![](images/7daypowerstate.jpg)
 
-Legend
+图例
 
-* **_Black color_**: Device is Powered On on (Intel AMT & agents)
-* **_Purple color_**: Device is in sleep state such as Hibernating (Intel AMT agents only)
-* **_Teal color_**: Device is connected through AMT/CIRA, but the Power State is UNKNOWN (Intel AMT agents only)
-* **_DarkGreen color_**: Device is connected through AMT/CIRA and is in Soft-Off Power State (Intel AMT agents only)
-* **_Grey color_**: Device is Powered Off/Not Connected To MeshCentral (Intel AMT & agents)
+* **_黑色_**: 设备已开启（Intel AMT 和代理）
+* **_紫色_**: 设备处于睡眠状态，例如休眠（仅限 Intel AMT 代理）
+* **_青绿色_**: 设备通过 AMT/CIRA 连接，但电源状态未知（仅限 Intel AMT 代理）
+* **_深绿色_**: 设备通过 AMT/CIRA 连接并处于软关闭电源状态（仅限 Intel AMT 代理）
+* **_灰色_**: 设备已关闭/未连接到 MeshCentral（Intel AMT 和代理）
 
-### Text Links
+### 文本链接
 
-You can set alternate port in the link if it's not default by right-clicking.
+如果链接不是默认端口，您可以通过右键单击在链接中设置备用端口。
 
 ![](images/general_alternateports.jpg)
 
@@ -82,137 +82,137 @@ You can set alternate port in the link if it's not default by right-clicking.
 * SCP
 * MQTT Login
 
-## Desktop
+## 桌面
 
-For connecting to the machines KVM interface.
+用于连接到机器的 KVM 接口。
 
-### Connect Button
+### 连接按钮
 
-Right-clicking on Connect button will give you additional options:
+右键单击连接按钮将为您提供其他选项：
 
-* Ask Consent + Bar
-* Ask Consent
-* Privacy Bar
+* 请求同意 + 栏
+* 请求同意
+* 隐私栏
 
 ![](images/desktop_connectbutton.jpg)
 
-### RDP Connect Button
+### RDP 连接按钮
 
-Right-clicking on RDP Connect button allows you to specify Alternate Port.
+右键单击 RDP 连接按钮允许您指定备用端口。
 
 ![](images/desktop_rdpconnectbutton.jpg)
 
-### Intel AMT Connect Button
+### Intel AMT 连接按钮
 
-Uses Intel AMT to control video output of the hardware video card.
+使用 Intel AMT 控制硬件视频卡的视频输出。
 
-### During a desktop session
+### 桌面会话期间
 
-**Bottom left include:**
+**左下角包括：**
 
-![desktop bottom left](images/desktop_buttonsbottomleft.jpg)
+![桌面左下角](images/desktop_buttonsbottomleft.jpg)
 
-* Sending special Keys
+* 发送特殊键
 
-**Top Right include:**
+**右上角包括：**
 
-Actions
+操作
 
 ![](images/desktop_buttonstopright_actions.jpg)
 
-* Wake Up
-* Run Commands
-* Sleep
-* Reset
-* Power Off
-* Uninstall Agent
+* 唤醒
+* 运行命令
+* 睡眠
+* 重置
+* 关机
+* 卸载代理
 
-Settings
+设置
 
 ![](images/desktop_settings.jpg)
 
-* Quality
-* Scaling
-* Frame rate
-* Swap Mouse Buttons
-* Reverse Mouse Wheel
-* Use Remote Keyboard Map
-* Automatic Clipboard
-* Lock on Disconnect
+* 质量
+* 缩放
+* 帧率
+* 交换鼠标按钮
+* 反转鼠标滚轮
+* 使用远程键盘映射
+* 自动剪贴板
+* 断开连接时锁定
 
 ![](images/desktop_buttonstopright_other.jpg)
 
-* Session recording indicator
-* Screen rotating
-* switching view mode
-* full screen
+* 会话录制指示器
+* 屏幕旋转
+* 切换视图模式
+* 全屏
 
-Bottom right include:
+右下角包括：
 
 ![](images/desktop_buttonsbottomright.jpg)
 
-* Session Sharing with Guest
-* Toggling keyboard lockout on guest
-* Refresh Desktop view
-* Upload Clipboard
-* Download Clipboard
-* Record Session to file
-* Take screenshot
-* Toggle Remote Desktop Background
-* Open URL on remote desktop
-* Lock the Remote computer
-* Display a notification on the remote computer
-* Open Chat Window
+* 与访客共享会话
+* 在访客上切换键盘锁定
+* 刷新桌面视图
+* 上传剪贴板
+* 下载剪贴板
+* 录制会话到文件
+* 截图
+* 切换远程桌面背景
+* 在远程桌面上打开 URL
+* 锁定远程计算机
+* 在远程计算机上显示通知
+* 打开聊天窗口
 
-## Terminal
+## 终端
 
-For connecting to a command line based interface on the agent
+用于连接到代理上的基于命令行的接口
 
-Right-clicking on Connect button allows you to:
+右键单击连接按钮允许您：
 
 !!!note
-    Linux and Windows have different options:
+    Linux 和 Windows 有不同的选项：
 
-* Admin Shell (Windows)
-* Admin Powershell (Windows)
-* User Shell (Windows)
-* User Powershell (Windows)
+* 管理员 Shell (Windows)
+* 管理员 Powershell (Windows)
+* 用户 Shell (Windows)
+* 用户 Powershell (Windows)
 * SSH (Linux)
 
 ![](images/terminal_connectbutton.jpg)
 
-## Files
+## 文件
 
-For transferring files to and from the agent.
+用于与代理传输文件。
 
-## Events
+## 事件
 
-Mesh Events related to the agent. This is your audit log to see what actions have been taken on the agent from the MeshCentral server.
+与代理相关的 Mesh 事件。这是您的审计日志，用于查看从 MeshCentral 服务器对代理执行的操作。
 
-## Details
+## 详细信息
 
-Agent information that includes:
+代理信息包括：
 
-* OS
-* Agent Info
-* Network Info
+* 操作系统
+* 代理信息
+* 网络信息
 * BIOS
-* Motherboard
-* Memory
-* Storage
+* 主板
+* 内存
+* 存储
 * Intel AMT
 
-Note you can show CPU and Memory usage info by clicking the icon in the top right corner
+注意：您可以通过单击右上角的图标来显示 CPU 和内存使用信息
 
 ![](images/details_cpuram.jpg)
 
 ## Intel AMT
 
-## Console
+## 控制台
 
-For debugging and communicating with the mesh agent.
+用于调试和与 mesh 代理通信。
 
-It allows JS commands to be issued to the device but also run extra commands from the meshcore. Type `help` for all available options
+它允许向设备发出 JS 命令，但也允许从 meshcore 运行额外的命令。输入 `help` 查看所有可用选项
 
 - 2falock
 - acceleratorsstats

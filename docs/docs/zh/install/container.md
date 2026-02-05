@@ -1,62 +1,62 @@
-# 🐳 Container (OCI-specification).
+# 🐳 容器 (OCI 规范)
 
-[Open Container Initiative](https://opencontainers.org/)
+[开放容器倡议](https://opencontainers.org/)
 
-The following section explains possible ways to install MeshCentral locally with the use of Docker or Podman.
-For the syntax, docker will be used as default. This is done because podman also supports this syntax.<br>
+以下部分介绍如何使用 Docker 或 Podman 在本地安装 MeshCentral。
+在语法方面，将默认使用 docker。这样做是因为 podman 也支持这种语法。<br>
 
-🔗 References:
+🔗 参考资料：
 
 - [Docker](https://www.docker.com/)  
 - [Podman](https://podman.io/)
 
 !!!warning
-    Do not use the built-in MeshCentral update functionality (when using containers).<br>
-    Update the container the 'docker way', by updating the image itself.
+    请勿使用 MeshCentral 内置的更新功能（使用容器时）。<br>
+    请以"docker 方式"更新容器，即通过更新镜像本身来更新。
 
-### 🏷️ Basic Tags:
+### 🏷️ 基础标签：
 
-| Tag-name | Explanation |
+| 标签名称 | 说明 |
 |--------|-----|
-| `master` | This tag belongs to the image which is built on every new commit to the main branch, therefor it has the latest code. |
-| `latest` | This tag takes the latest released version of MeshCentral.  |
-| `1.1.51` | You can also specify the specific MeshCentral release with its tag, for example:  `ghcr.io/ylianst/meshcentral:1.1.43` |
+| `master` | 此标签属于在每次提交到主分支时构建的镜像，因此包含最新代码。 |
+| `latest` | 此标签使用 MeshCentral 的最新发布版本。 |
+| `1.1.51` | 您也可以使用特定标签指定具体的 MeshCentral 版本，例如：`ghcr.io/ylianst/meshcentral:1.1.43` |
 
-### All Tags
+### 所有标签
 
-All master tags below follow the master branch of MeshCentral, the latest and version numbered versions follow the releases.
+以下所有 master 标签跟随 MeshCentral 的 master 分支，latest 和带版本号的标签跟随发布版本。
 
-| Tag-name | Explanation |
+| 标签名称 | 说明 |
 | -------- | ----------- |
-| `master-slim` | Docker image with no database packages present, which makes it the most lean. Uses NeDB. |
-| `master-mongodb` | Docker image with the MongoDB packages installed. |
-| `master-postgresql` | Docker image with the PostgreSQL packages installed |
-| `master-mysql` | Docker image with the MySQL packages installed |
-| `1.1.51-slim` and `latest-slim` | Docker image with no database packages present, which makes it the most lean. Uses NeDB. |
-| `1.1.51-mongodb` and `latest-mongodb` | Docker image with the MongoDB packages installed. |
-| `1.1.51-postgresql` and `latest-postgresql` | Docker image with the PostgreSQL packages installed. |
-| `1.1.51-mysql` and `latest-mysql` | Docker image with the MySQL packages installed. |
+| `master-slim` | 不包含数据库包的 Docker 镜像，最为精简。使用 NeDB。 |
+| `master-mongodb` | 安装了 MongoDB 包的 Docker 镜像。 |
+| `master-postgresql` | 安装了 PostgreSQL 包的 Docker 镜像 |
+| `master-mysql` | 安装了 MySQL 包的 Docker 镜像 |
+| `1.1.51-slim` 和 `latest-slim` | 不包含数据库包的 Docker 镜像，最为精简。使用 NeDB。 |
+| `1.1.51-mongodb` 和 `latest-mongodb` | 安装了 MongoDB 包的 Docker 镜像。 |
+| `1.1.51-postgresql` 和 `latest-postgresql` | 安装了 PostgreSQL 包的 Docker 镜像。 |
+| `1.1.51-mysql` 和 `latest-mysql` | 安装了 MySQL 包的 Docker 镜像。 |
 
 ---
-> **📌 Note:**
-Refer to [this page](https://github.com/Ylianst/MeshCentral/pkgs/container/meshcentral) for more information on the container status.
+> **📌 注意：**
+有关容器状态的更多信息，请参阅[此页面](https://github.com/Ylianst/MeshCentral/pkgs/container/meshcentral)。
 ---
 
 ## 🐋 Docker/Podman
 
-For single-machine setups such as Docker and Podman.
+适用于 Docker 和 Podman 等单机部署。
 
-### Pulling the image:
+### 拉取镜像：
 
-To pull the container image use the following container registry.
+要拉取容器镜像，请使用以下容器仓库。
 
 ```sh
 docker pull ghcr.io/ylianst/meshcentral:latest
 ```
 
-### Docker CLI:
+### Docker CLI：
 
-If you want to run the container from the Terminal, you can use the following command:
+如果您想从终端运行容器，可以使用以下命令：
 
 ```sh linenums="1"
 docker run -d \
@@ -71,16 +71,16 @@ docker run -d \
   ghcr.io/ylianst/meshcentral:latest
 ```
 
-### Docker Compose:
+### Docker Compose：
 
-If you want to use a docker compose yaml file, please refer to the example below.
+如果您想使用 docker compose yaml 文件，请参阅以下示例。
 
 ```yaml linenums="1"
 services:
   meshcentral:
     image: ghcr.io/ylianst/meshcentral:latest
     environment:
-      - DYNAMIC_CONFIG=false # Show the option but disable it by default, for safety.
+      - DYNAMIC_CONFIG=false # 显示该选项但默认禁用它，以确保安全。
     volumes:
       - meshcentral-data:/opt/meshcentral/meshcentral-data
       - meshcentral-files:/opt/meshcentral/meshcentral-files
@@ -96,14 +96,14 @@ volumes:
   meshcentral-backups:
 ```
 
-Refer to [the Dockerfile](https://github.com/Ylianst/MeshCentral/blob/5032755c2971955161105922e723461385a6c874/docker/Dockerfile#L70-L123) for its environment variables.
+有关环境变量，请参阅 [Dockerfile](https://github.com/Ylianst/MeshCentral/blob/5032755c2971955161105922e723461385a6c874/docker/Dockerfile#L70-L123)。
 
 ## ☸️ Kubernetes
 
 ###
 
-> Using YAML deployment files.
+> 使用 YAML 部署文件。
 
-## 📚 Extra sources
+## 📚 额外资源
 
-> [Github Docker Resources](https://github.com/Ylianst/MeshCentral/tree/master/docker)
+> [Github Docker 资源](https://github.com/Ylianst/MeshCentral/tree/master/docker)

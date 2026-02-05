@@ -1,16 +1,16 @@
-# Installation
+# 安装
 
-## 🧾 Abstract
+## 🧾 摘要
 
-These guides are specifically intended to help users install and configure MeshCentral.<br>
-Once installed, you can take a look at the MeshCentral user’s guide,<br>
-for information on how to configure MeshCentral for your specific use.<br>
-In this document, we will look at installing MeshCentral on different operating systems like:
+这些指南专门旨在帮助用户安装和配置 MeshCentral。<br>
+安装完成后，您可以查看 MeshCentral 用户指南，<br>
+了解如何针对您的特定用途配置 MeshCentral。<br>
+在本文档中，我们将介绍如何在不同的操作系统上安装 MeshCentral：
 
-And remember! The `config.json` is case insensitive in its keys.
+请记住！`config.json` 中的键是大小写不敏感的。
 
- - 📢 **[Quick-start](./quickstart.md)**
+ - 📢 **[快速开始](./quickstart.md)**
 
- - 🧐 **[Advanced Information](./advanced.md)**
+ - 🧐 **[高级信息](./advanced.md)**
 
- - 🪟 **[Windows-specific](./windows.md)**
+ - 🪟 **[Windows 专用](./windows.md)**
